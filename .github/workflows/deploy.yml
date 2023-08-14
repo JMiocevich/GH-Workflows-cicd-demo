@@ -9,7 +9,44 @@ permissions:
   contents: read
 
 jobs:
-  ppd:
-    uses: ./.github/workflows/template.yml
-  prod:
-    uses: ./.github/workflows/template.yml
+  UnitTesting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run build script
+        run: echo "fake build"
+        shell: bash
+
+  Build:
+    needs: UnitTesting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run build script
+        run: echo "fake build"
+        shell: bash
+
+  DeployPPD:
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run build script
+        run: echo "fake build"
+      - name: Run build script
+        run: echo "fake build"
+        shell: bash
+
+
+  IntegrationTesting:
+    needs: [Templates, References, Glue, App, Docker, Batches, Pipelines]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run build script
+        run: echo "fake build"
+        shell: bash
+
+  AcceptanceTesting:
+    needs: [IntegrationTesting]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run build script
+        run: echo "fake build"
+        shell: bash

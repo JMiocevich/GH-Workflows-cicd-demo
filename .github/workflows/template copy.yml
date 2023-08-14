@@ -1,0 +1,15 @@
+name: Deploy Script
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  ppd:
+    uses: ./.github/workflows/template.yml
+  prod:
+    uses: ./.github/workflows/template.yml
