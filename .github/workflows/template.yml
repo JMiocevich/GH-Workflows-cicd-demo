@@ -30,8 +30,7 @@ jobs:
       - name: Run build script
         run: echo "fake build"
         shell: bash
-    steps:
-      - name: deploy batches
+      - name: Run build script
         run: echo "fake build"
         shell: bash
   Docker:
