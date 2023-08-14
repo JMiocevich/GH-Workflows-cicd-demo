@@ -7,23 +7,23 @@ permissions:
   contents: read
 
 jobs:
-  BaseInfra:
+  Deploy:
     runs-on: ubuntu-latest
     environment: 
       name: ppd
     steps:
       - id: step1
-        run: sleep 2
+        run: sleep 3
       - id: step23
         run: sleep 2
       - id: step12222
         run: sleep 3
       - id: step231
-        run: sleep 5
+        run: sleep 20
       - id: step113
         run: sleep 5
       - id: step132
-        run: sleep 5
+        run: sleep 10
 
   # DeployInfrastructure:
   #   needs: BaseInfra

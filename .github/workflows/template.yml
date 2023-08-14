@@ -7,10 +7,10 @@ permissions:
   contents: read
 
 jobs:
-  BaseInfra:
+  Deploy:
     runs-on: ubuntu-latest
     environment: 
-      name: production
+      name: prod
     steps:
       - id: step1
         run: sleep 2
@@ -19,7 +19,7 @@ jobs:
       - id: step12222
         run: sleep 3
       - id: step231
-        run: sleep 5
+        run: sleep 5 exit 1
       - id: step113
         run: sleep 5
       - id: step132
