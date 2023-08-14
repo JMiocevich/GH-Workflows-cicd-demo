@@ -12,19 +12,28 @@ jobs:
     environment: 
       name: ppd
     steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
+      - id: step1
+        run: echo "firstword=hello" >> $GITHUB_OUTPUT
+      - id: step23
+        run: echo "secondword=world" >> $GITHUB_OUTPUT
+      - id: step12222
+        run: echo "firstword=hello" >> $GITHUB_OUTPUT
+      - id: step231
+        run: echo "secondword=world" >> $GITHUB_OUTPUT
+      - id: step113
+        run: echo "firstword=hello" >> $GITHUB_OUTPUT
+      - id: step132
+        run: echo "secondword=world" >> $GITHUB_OUTPUT
 
-  DeployInfrastructure:
-    needs: BaseInfra
-    environment: 
-      name: ppd
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
+  # DeployInfrastructure:
+  #   needs: BaseInfra
+  #   environment: 
+  #     name: production
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run build script
+  #       run: echo "fake build"
+  #       shell: bash
 
   # Pipelines:
   #   needs: DeployInfrastructure
