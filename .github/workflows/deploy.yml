@@ -9,9 +9,5 @@ permissions:
   contents: read
 
 jobs:
-  deployPPD:
+  call-workflow:
     uses: ./.github/workflows/template.yml
-  # deployProd:
-  #   needs: BaseInfra
-  #   environment: production
-  #     uses: ./.github/workflows/template.yml
