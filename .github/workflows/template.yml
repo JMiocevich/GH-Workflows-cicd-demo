@@ -13,7 +13,6 @@ jobs:
       - name: Run build script
         run: echo "fake build"
         shell: bash
-        
 
   DeployInfrastructure:
     needs: BaseInfra
@@ -30,6 +29,10 @@ jobs:
       - name: Run build script
         run: echo "fake build"
         shell: bash
+  Batches:
+    needs: DeployInfrastructure
+    runs-on: ubuntu-latest
+    steps:
       - name: Run build script
         run: echo "fake build"
         shell: bash
