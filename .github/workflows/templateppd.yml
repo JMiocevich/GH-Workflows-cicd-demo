@@ -19,11 +19,11 @@ jobs:
       - id: step12222
         run: sleep 3
       - id: step231
-        run: sleep 20
+        run: sleep 1
       - id: step113
         run: sleep 5
       - id: step132
-        run: sleep 10
+        run: sleep 2
 
   # DeployInfrastructure:
   #   needs: BaseInfra
