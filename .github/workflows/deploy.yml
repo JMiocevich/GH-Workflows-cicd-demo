@@ -1,0 +1,17 @@
+name: Deploy Script
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  BaseInfra:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run build script
+        run: echo "fake build"
+        shell: bash
