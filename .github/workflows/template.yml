@@ -22,68 +22,68 @@ jobs:
         run: echo "fake build"
         shell: bash
 
-  Pipelines:
-    needs: DeployInfrastructure
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
-  Batches:
-    needs: DeployInfrastructure
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
-  Docker:
-    needs: DeployInfrastructure
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
-  App:
-    needs: DeployInfrastructure
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
-  Glue:
-    needs: DeployInfrastructure
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
-  References:
-    needs: DeployInfrastructure
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
-  Templates:
-    needs: DeployInfrastructure
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
+  # Pipelines:
+  #   needs: DeployInfrastructure
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run build script
+  #       run: echo "fake build"
+  #       shell: bash
+  # Batches:
+  #   needs: DeployInfrastructure
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run build script
+  #       run: echo "fake build"
+  #       shell: bash
+  # Docker:
+  #   needs: DeployInfrastructure
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run build script
+  #       run: echo "fake build"
+  #       shell: bash
+  # App:
+  #   needs: DeployInfrastructure
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run build script
+  #       run: echo "fake build"
+  #       shell: bash
+  # Glue:
+  #   needs: DeployInfrastructure
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run build script
+  #       run: echo "fake build"
+  #       shell: bash
+  # References:
+  #   needs: DeployInfrastructure
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run build script
+  #       run: echo "fake build"
+  #       shell: bash
+  # Templates:
+  #   needs: DeployInfrastructure
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run build script
+  #       run: echo "fake build"
+  #       shell: bash
 
-  IntegrationTesting:
-    needs: [Templates, References, Glue, App, Docker, Batches, Pipelines]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
+  # IntegrationTesting:
+  #   needs: [Templates, References, Glue, App, Docker, Batches, Pipelines]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run build script
+  #       run: echo "fake build"
+  #       shell: bash
 
-  AcceptanceTesting:
-    needs: [IntegrationTesting]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
+  # AcceptanceTesting:
+  #   needs: [IntegrationTesting]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run build script
+  #       run: echo "fake build"
+  #       shell: bash

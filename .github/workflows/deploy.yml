@@ -16,7 +16,7 @@ jobs:
         run: echo "fake build"
         shell: bash
 
-  Build:
+  BuildDependencies:
     needs: UnitTesting
     runs-on: ubuntu-latest
     steps:
@@ -25,32 +25,8 @@ jobs:
         shell: bash
 
   DeployPPD:
-    needs: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run build script
-        run: echo "fake build"
-      - name: Do something else
-        run: echo "fake build"
-      - name: Do something else2
-        run: echo "fake build"
-      - name: Do something else3
-        run: echo "fake build"
-        shell: bash
-
-
-  # IntegrationTesting:
-  #   needs: [Templates, References, Glue, App, Docker, Batches, Pipelines]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Run build script
-  #       run: echo "fake build"
-  #       shell: bash
-
-  # AcceptanceTesting:
-  #   needs: [IntegrationTesting]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Run build script
-  #       run: echo "fake build"
-  #       shell: bash
+    needs: BuildDependencies
+    uses: ./.github/workflows/template.yml
+  DeployProd:
+    needs: DeployPPD
+    uses: ./.github/workflows/template.yml
