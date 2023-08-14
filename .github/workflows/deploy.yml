@@ -50,7 +50,7 @@ jobs:
     needs: [PPD, IntegrationAcceptanceTesting]
     uses: ./.github/workflows/template.yml
 
-  IntegrationAcceptanceTesting:
+  IntegrationAcceptanceTestings:
     needs: [PPD,IntegrationAcceptanceTesting,Production]
     runs-on: ubuntu-latest
     environment: 
