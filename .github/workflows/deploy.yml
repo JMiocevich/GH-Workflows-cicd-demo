@@ -9,5 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  call-workflow:
+  ppd:
+    uses: ./.github/workflows/template.yml
+  prod:
     uses: ./.github/workflows/template.yml
