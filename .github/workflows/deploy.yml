@@ -24,8 +24,16 @@ jobs:
         run: echo "fake build"
         shell: bash
 
+  BuildImages:
+    needs: UnitTesting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run build script
+        run: echo "fake build"
+        shell: bash
+
   PPD:
-    needs: BuildDependencies
+    needs: [BuildDependencies,BuildImages]
     uses: ./.github/workflows/templateppd.yml
   Production:
     needs: PPD
