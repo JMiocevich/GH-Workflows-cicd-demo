@@ -28,5 +28,5 @@ jobs:
     needs: BuildDependencies
     uses: ./.github/workflows/templateppd.yml
   Production:
-    needs: DeployPPD
+    needs: PPD
     uses: ./.github/workflows/template.yml
