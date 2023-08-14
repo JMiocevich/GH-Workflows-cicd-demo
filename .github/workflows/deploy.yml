@@ -25,10 +25,8 @@ jobs:
         shell: bash
 
   DeployPPD:
-    environment: ppd
     needs: BuildDependencies
-    uses: ./.github/workflows/template.yml
+    uses: ./.github/workflows/templateppd.yml
   DeployProd:
-    environment: prod
     needs: DeployPPD
     uses: ./.github/workflows/template.yml

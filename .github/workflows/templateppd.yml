@@ -10,7 +10,7 @@ jobs:
   BaseInfra:
     runs-on: ubuntu-latest
     environment: 
-      name: production
+      name: ppd
     steps:
       - name: Run build script
         run: echo "fake build"
@@ -19,7 +19,7 @@ jobs:
   DeployInfrastructure:
     needs: BaseInfra
     environment: 
-      name: production
+      name: ppd
     runs-on: ubuntu-latest
     steps:
       - name: Run build script
