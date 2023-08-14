@@ -35,6 +35,27 @@ jobs:
   PPD:
     needs: [BuildDependencies,BuildImages]
     uses: ./.github/workflows/templateppd.yml
+  Integration+AcceptanceTesting:
+    needs: [PPD,BuildImages]
+    runs-on: ubuntu-latest
+    environment: 
+      name: ppd
+    steps:
+      - id: step1
+        run: sleep 2
+      - id: step23
+        run: sleep 2
   Production:
     needs: PPD
     uses: ./.github/workflows/template.yml
+
+  Prod/Integration+AcceptanceTesting:
+    needs: [PPD,Integration+AcceptanceTesting,Production]
+    runs-on: ubuntu-latest
+    environment: 
+      name: prod
+    steps:
+      - id: step1
+        run: sleep 2
+      - id: step23
+        run: sleep 2
