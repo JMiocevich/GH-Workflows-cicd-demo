@@ -10,9 +10,9 @@ permissions:
 
 jobs:
   deployPPD:
-  environment: ppd
-    uses: ./.github/workflows/template.yml
+    environment: ppd
+      uses: ./.github/workflows/template.yml
   deployProd:
-  needs: BaseInfra
-  environment: production
-    uses: ./.github/workflows/template.yml
+    needs: BaseInfra
+    environment: production
+      uses: ./.github/workflows/template.yml
