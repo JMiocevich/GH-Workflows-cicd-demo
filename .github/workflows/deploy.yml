@@ -30,7 +30,11 @@ jobs:
     steps:
       - name: Run build script
         run: echo "fake build"
-      - name: Run build script
+      - name: Do something else
+        run: echo "fake build"
+      - name: Do something else2
+        run: echo "fake build"
+      - name: Do something else3
         run: echo "fake build"
         shell: bash
 
