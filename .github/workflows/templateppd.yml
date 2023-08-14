@@ -13,17 +13,17 @@ jobs:
       name: ppd
     steps:
       - id: step1
-        run: echo "firstword=hello" >> $GITHUB_OUTPUT
+        run: sleep 2
       - id: step23
-        run: echo "secondword=world" >> $GITHUB_OUTPUT
+        run: sleep 2
       - id: step12222
-        run: echo "firstword=hello" >> $GITHUB_OUTPUT
+        run: sleep 3
       - id: step231
-        run: echo "secondword=world" >> $GITHUB_OUTPUT
+        run: sleep 5
       - id: step113
-        run: echo "firstword=hello" >> $GITHUB_OUTPUT
+        run: sleep 5
       - id: step132
-        run: echo "secondword=world" >> $GITHUB_OUTPUT
+        run: sleep 5
 
   # DeployInfrastructure:
   #   needs: BaseInfra

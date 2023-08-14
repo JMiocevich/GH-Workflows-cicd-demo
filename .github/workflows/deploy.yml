@@ -24,9 +24,9 @@ jobs:
         run: echo "fake build"
         shell: bash
 
-  DeployPPD:
+  PPD:
     needs: BuildDependencies
     uses: ./.github/workflows/templateppd.yml
-  DeployProd:
+  Production:
     needs: DeployPPD
     uses: ./.github/workflows/template.yml
