@@ -48,6 +48,8 @@ jobs:
       - id: step23
         run: sleep 2
   Production:
+    environment: 
+      name: prod
     needs: [PPD, IntegrationAcceptanceTesting]
     uses: ./.github/workflows/template.yml
 
