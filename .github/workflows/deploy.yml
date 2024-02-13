@@ -21,11 +21,12 @@ jobs:
           filters: |
             changes_in_specific_folder:
               - 'nextjs/**/*'
+          
 
 
   BuildNextJs_DEV:
     needs: check_changes
-    if: needs.check_changes.outputs.changes_in_specific_folder == 'true'
+    if: ${{needs.check_changes.outputs.changes_in_specific_folder}} == 'true'
     uses: ./.github/workflows/nextjsStuff.yml
     with:
       environment: Dev
