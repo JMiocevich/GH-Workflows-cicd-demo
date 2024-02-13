@@ -12,21 +12,22 @@ jobs:
   check_changes:
     runs-on: ubuntu-latest
     outputs:
-      changes_in_specific_folder: ${{ steps.filter.outputs.changes_detected }}
+      frontend: ${{ steps.filter.outputs.changes_detected }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - id: filter
         uses: dorny/paths-filter@v2
         with:
           filters: |
-            changes_in_specific_folder:
+            changes_detected:
               - 'nextjs/**/*'
+              
           
 
 
   BuildNextJs_DEV:
     needs: check_changes
-    if: ${{needs.check_changes.outputs.changes_in_specific_folder}} == 'true'
+    if:  ${{ needs.check_changes.outputs.frontend == 'true' }}
     uses: ./.github/workflows/nextjsStuff.yml
     with:
       environment: Dev
