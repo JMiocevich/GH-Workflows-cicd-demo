@@ -57,11 +57,11 @@ jobs:
     if: ${{ needs.check_changes.outputs.frontend == 'true' }}
     uses: ./.github/workflows/nextjsStuff.yml
     with:
-      environment: np
+      environment: prod
 
   BuildBackend_Prod:
     needs: [BuildBackend_NP,BuildNextJs_NP]
     if: always()
     uses: ./.github/workflows/backendStuff.yml
     with:
-      environment: np
+      environment: prod
