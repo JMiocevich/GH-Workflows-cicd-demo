@@ -40,7 +40,7 @@ jobs:
 
   BuildNextJs_NP:
     needs: [BuildBackend_DEV,BuildNextJs_DEV]
-    if: ${{needs.check_changes.outputs.changes_in_specific_folder}} == 'true'
+    if: ${{ needs.check_changes.outputs.frontend == 'true' }}
     uses: ./.github/workflows/nextjsStuff.yml
     with:
       environment: np
@@ -54,7 +54,7 @@ jobs:
 
   BuildNextJs_Prod:
     needs: [BuildBackend_NP,BuildNextJs_NP]
-    if: ${{needs.check_changes.outputs.changes_in_specific_folder}} == 'true'
+    if: ${{ needs.check_changes.outputs.frontend == 'true' }}
     uses: ./.github/workflows/nextjsStuff.yml
     with:
       environment: np
