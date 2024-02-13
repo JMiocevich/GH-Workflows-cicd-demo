@@ -39,14 +39,14 @@ jobs:
 
 
   BuildNextJs_NP:
-    needs: [check_changes,BuildBackend_DEV]
-    if: needs.check_changes.outputs.changes_in_specific_folder == 'true'
+    needs: [BuildBackend_DEV,BuildNextJs_DEV]
+    if: ${{needs.check_changes.outputs.changes_in_specific_folder}} == 'true'
     uses: ./.github/workflows/nextjsStuff.yml
     with:
       environment: np
 
   BuildBackend_NP:
-    needs: [check_changes,BuildNextJs_NP]
+    needs: [BuildNextJs_NP]
     if: always()
     uses: ./.github/workflows/backendStuff.yml
     with:
