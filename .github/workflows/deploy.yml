@@ -9,56 +9,59 @@ permissions:
   contents: read
 
 jobs:
-  UnitTesting:
+  check_changes:
     runs-on: ubuntu-latest
+    outputs:
+      changes_in_specific_folder: ${{ steps.filter.outputs.changes_detected }}
     steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
+      - uses: actions/checkout@v2
+      - id: filter
+        uses: dorny/paths-filter@v2
+        with:
+          filters: |
+            changes_in_specific_folder:
+              - './nextjs/**'
 
-  BuildDependencies:
-    needs: UnitTesting
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
+  BuildNextJs_DEV:
+    needs: check_changes
+    if: needs.check_changes.outputs.changes_in_specific_folder == 'true'
+    uses: ./.github/workflows/nextjsStuff.yml
+    with:
+      environment: Dev
 
-  BuildImages:
-    needs: UnitTesting
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run build script
-        run: echo "fake build"
-        shell: bash
+  BuildBackend_DEV:
+    needs: BuildNextJs_DEV
+    if: always()
+    uses: ./.github/workflows/backendStuff.yml
+    with:
+      environment: Dev
 
-  PPD:
-    needs: [BuildDependencies,BuildImages]
-    uses: ./.github/workflows/templateppd.yml
 
-  IntegrationAcceptanceTesting:
-    needs: [PPD,BuildImages]
-    runs-on: ubuntu-latest
-    environment: 
-      name: ppd
-    steps:
-      - id: step1
-        run: sleep 2
-      - id: step23
-        run: sleep 2
-  Production:
-    needs: [PPD, IntegrationAcceptanceTesting]
-    uses: ./.github/workflows/template.yml
+  BuildNextJs_NP:
+    needs: [check_changes,BuildBackend_DEV]
+    if: needs.check_changes.outputs.changes_in_specific_folder == 'true'
+    uses: ./.github/workflows/nextjsStuff.yml
+    with:
+      environment: np
 
-  IntegrationAcceptanceTestings:
-    needs: [PPD,IntegrationAcceptanceTesting,Production]
-    runs-on: ubuntu-latest
-    environment: 
-      name: prod
-    steps:
-      - id: step1
-        run: sleep 2
-      - id: step23
-        run: sleep 2
+  BuildBackend_NP:
+    needs: [check_changes,BuildNextJs_NP]
+    if: always()
+    uses: ./.github/workflows/backendStuff.yml
+    with:
+      environment: np
 
+  BuildNextJs_Prod:
+    needs: [check_changes,BuildBackend_NP]
+    if: needs.check_changes.outputs.changes_in_specific_folder == 'true'
+    uses: ./.github/workflows/nextjsStuff.yml
+    with:
+      environment: prod
+
+  BuildBackend_prod:
+    needs:  [check_changes,BuildNextJs_Prod]
+    if: always()
+    uses: ./.github/workflows/backendStuff.yml
+    with:
+      environment: prod
 

@@ -1,0 +1,30 @@
+name: Deploy Script
+
+on:
+  workflow_call:
+   inputs:
+     environment:
+       type: string
+       required: true
+
+permissions:
+  contents: read
+
+jobs:
+  paths-filter:
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.filter.outputs.workflows }}
+    steps:
+    - uses: actions/checkout@v2
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          workflows:
+            - '.github/workflows/**'
+    # run only if 'workflows' files were changed
+    - name: workflow tests
+      if: steps.filter.outputs.workflows == 'true'
+      run: echo "Workflow file"
+

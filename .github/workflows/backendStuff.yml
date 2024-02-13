@@ -1,0 +1,21 @@
+name: Deploy Script
+
+on:
+  workflow_call:
+   inputs:
+     environment:
+       type: string
+       required: true
+
+permissions:
+  contents: read
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    environment: 
+      name: ${{ inputs.environment }}
+    steps:
+      - id: step1
+        run: sleep 2
+
